@@ -1,23 +1,18 @@
 import express from "express"
 import connectDB from "./config/dbConfig.js"
+import cors from cors
+import router from "./routes/userRoute.js"
 
 const PORT = 3000
 
 const app = express()
 
-app.get("/",(req,res)=>{
-    res.send("hello world")
+app.use(cors())
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
+app.use(express.text())
 
-})
-
-app.get("/posts",(req,res)=>{
-    res.send("post section")
-    
-})
-
-app.get("/notes",(req,res)=>{
-    res.json({name:"karan",subject:"science"})
-})
+app.use(router)
 
 app.listen(PORT,()=>{
     console.log("express server is running")

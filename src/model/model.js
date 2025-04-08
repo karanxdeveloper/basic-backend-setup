@@ -9,8 +9,8 @@ const userSchema = new Schema({
         type:String,
         required:true
     },
-    age:{
-        type:Number,
+    gender:{
+        type:String,
         required:true
     },
 },{timestamps : true})
